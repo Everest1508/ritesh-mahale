@@ -1,13 +1,14 @@
-import FireParticles from "../Components/FireParticles";
+// HelloPage.js
 
-export default function App() {
-    return (
-        <div style={{ textAlign: "center", marginTop: "20vh" }}>
-            <h1>Welcome to Fire Particles</h1>
-            <h3>Enjoy the fiery effect!</h3>
-            <FireParticles />
-            dsfsdf
-            dfffs
-        </div>
-    );
-}
+import React from "react";
+
+const HelloPage = () => {
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <h1 className="text-4xl text-gray-900">Hello Page</h1>
+      {/* Add content for your Hello page here */}
+    </div>
+  );
+};
+
+export default HelloPage;
