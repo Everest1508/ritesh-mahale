@@ -1,12 +1,25 @@
 import React, { useState } from "react";
 import FireParticles from "./Components/Particles";
 import LampString from "./Components/LampString";
+import { motion, useMotionValue, useTransform } from "framer-motion";
 
 export default function App() {
     const [isDarkTheme, setIsDarkTheme] = useState(false);
+    const dragY = useMotionValue(0);
 
     const toggleTheme = () => {
         setIsDarkTheme(!isDarkTheme);
+    };
+
+    const handleDrag = (event, info) => {
+        const dragDistance = info.offset.y;
+        const sensitivity = 50; // Adjust sensitivity as needed
+
+        if (dragDistance > sensitivity) {
+            setIsDarkTheme(true); // Dragged down, switch to dark theme
+        } else if (dragDistance < -sensitivity) {
+            setIsDarkTheme(false); // Dragged up, switch to light theme
+        }
     };
 
     return (
@@ -14,8 +27,17 @@ export default function App() {
             <div className="absolute z-10">
                 <FireParticles theme={isDarkTheme ? "dark" : "light"} />
             </div>
-            <div className="relative z-20 text-center">
-            <LampString />
+            <motion.div
+                className="relative z-20 text-center"
+                drag="y"
+                dragConstraints={{ top: 0, bottom: 0 }}
+                style={{ cursor: "grab" }}
+                dragElastic={0.1}
+                dragMomentum={false}
+                onDrag={handleDrag}
+                dragY={dragY}
+            >
+                <LampString />
                 <h3 className={`text-9xl font-jp ${isDarkTheme ? "text-white" : "text-black"}`}>
                     リテシュ・マハレ
                 </h3>
@@ -28,7 +50,7 @@ export default function App() {
                 >
                     {isDarkTheme ? "Switch to Light Theme" : "Switch to Dark Theme"}
                 </button>
-            </div>
+            </motion.div>
         </div>
     );
 }

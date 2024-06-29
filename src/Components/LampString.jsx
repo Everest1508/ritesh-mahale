@@ -7,19 +7,30 @@ const LampString = () => {
             className="lamp-string"
             style={{
                 position: "fixed",
-                top: "20px", // Adjust top position as needed
+                top: "0px", // Adjust top position as needed
                 right: "20px", // Adjust right position as needed
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                transformOrigin: "top center", // Set transform origin to top center
             }}
             animate={{
-                rotate: [0, -5, 5, -5, 0], // Swing animation keyframes
-            }}
-            transition={{
-                duration: 2, // Duration of the animation
-                ease: "easeInOut", // Easing function
-                loop: Infinity, // Loop the animation infinitely
+                rotate: [-5, 5, -5], // Rotation keyframes for swinging
+                transition: {
+                    duration: 3, // Duration of each swing
+                    ease: "easeInOut", // Easing function
+                    repeat: Infinity, // Repeat the animation infinitely
+                    repeatType: "reverse", // Reverse direction after each swing
+                },
             }}
         >
-            {/* Lamp string element */}
+            {/* Lamp string elements */}
+            <div className="lamp"></div>
+            <div className="lamp"></div>
+            <div className="lamp"></div>
+            <div className="lamp"></div>
+            <div className="lamp"></div>
+            <div className="lamp"></div>
             <div className="lamp"></div>
             <div className="lamp"></div>
             <div className="lamp"></div>
