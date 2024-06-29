@@ -2,4 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-/* .font */
+.lamp-string {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lamp {
+  width: 10px; /* Adjust lamp size */
+  height: 20px; /* Adjust lamp size */
+  background-color: #ffcc00; /* Lamp color */
+  border-radius: 50%; /* Rounded shape */
+  margin-bottom: 5px; /* Spacing between lamps */
+}
